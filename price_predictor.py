@@ -81,7 +81,7 @@ model = joblib.load(
 )
     
 df = pd.read_csv("data_before_model_selection")
-geo_df=pd.read_csv("geo_mapdataset.csv")
+geo_df=pd.read_csv("geo_mapdataset")
 
 if "page" not in st.session_state:
     st.session_state.page = "Home"
