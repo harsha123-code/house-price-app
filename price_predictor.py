@@ -67,13 +67,29 @@ st.markdown("""
         color: #000000;
     }
 
+    [data-testid="stMetricValue"] {
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
+    [data-testid="stMetricLabel"] {
+        color: #000000 !important;
+    }
+
     div[data-baseweb="select"] {
         background-color: #ffffff;
     }
+            
+    .stButton > button {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid #cccccc !important;
+}
+            
+    
 
 </style>
 """, unsafe_allow_html=True)
-
 
 
 model = joblib.load(
@@ -798,7 +814,7 @@ def get_image(query_list):
 
 if page=='Recommendation':
 
-    df3=pd.read_csv(r"C:\Users\DELL\Desktop\house price predicton\flats_final")
+    df3=pd.read_csv("flats_final")
     st.title(" Society Recommendation")
 
     st.markdown("###  Find Best Societies for You")
@@ -842,10 +858,9 @@ if page=='Recommendation':
         # price preference (lower is better)
         price_score = 1 / row["price"]
 
-        # availability (more listings = more reliable)
+       
         count_score = row["count"] / grouped["count"].max()
 
-        # final weighted score
         return (0.5 * area_score) + (0.3 * price_score) + (0.2 * count_score)
 
 
@@ -860,7 +875,7 @@ if page=='Recommendation':
 
         col1, col2 = st.columns([1, 2])
 
-        # ---- IMAGE (placeholder for now) ----
+        
         with col1:
             
             queries = [
@@ -880,7 +895,7 @@ if page=='Recommendation':
                 st.image("https://via.placeholder.com/300", use_container_width=True)
                     
 
-        # ---- DETAILS ----
+        
         with col2:
             st.markdown(f"###  {row['society_name']}")
             st.write(f" {locality}")
@@ -888,7 +903,7 @@ if page=='Recommendation':
             st.write(f" Avg Area: {int(row['buildup_area'])} sq.ft")
             st.write(f" Listings Available: {int(row['count'])}")
 
-            # ---- SMART TAG ----
+           
             if row["score"] > grouped["score"].mean():
                 st.success(" Best Value")
             else:
