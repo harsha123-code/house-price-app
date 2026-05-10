@@ -80,7 +80,7 @@ model = joblib.load(
 'xgb_pipeline.joblib'
 )
     
-df = pd.read_csv("data_before_model_selection.csv")
+df = pd.read_csv("data_before_model_selection.")
 geo_df=pd.read_csv("geo_mapdataset.csv")
 
 if "page" not in st.session_state:
@@ -313,8 +313,15 @@ elif page == "Analysis":
         },
         custom_data=['buildup_area','carpet_area','price_sqft'],
         zoom=10,
-        height=500,
+        height=200,
         color_continuous_scale="Turbo"
+    )
+    fig.update_traces(
+    textfont=dict(
+    color="black",
+    size=10
+    
+)
     )
 
     # Step 4: Styling
