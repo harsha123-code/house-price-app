@@ -80,9 +80,8 @@ model = joblib.load(
 'xgb_pipeline.joblib'
 )
     
-df = pd.read_csv(
-r"C:\Users\DELL\Downloads\data_before_model_selection")
-geo_df=pd.read_csv(r"C:\Users\DELL\Downloads\geo_mapdataset")
+df = pd.read_csv("data_before_model_selection.csv")
+geo_df=pd.read_csv("geo_mapdataset.csv")
 
 if "page" not in st.session_state:
     st.session_state.page = "Home"
@@ -375,7 +374,7 @@ elif page == "Analysis":
     ax.axis('off')
 
     st.pyplot(fig_wc)
-    df2=pd.read_csv(r"C:\Users\DELL\Desktop\house price predicton\flats_final")
+    df2 = pd.read_csv("flats_final")
     fig_scatter = px.scatter(
     df2,
     x='buildup_area',
