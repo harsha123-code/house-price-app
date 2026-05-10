@@ -80,7 +80,7 @@ model = joblib.load(
 'xgb_pipeline.joblib'
 )
     
-df = pd.read_csv("data_before_model_selection.")
+df = pd.read_csv("data_before_model_selection")
 geo_df=pd.read_csv("geo_mapdataset.csv")
 
 if "page" not in st.session_state:
@@ -342,7 +342,7 @@ elif page == "Analysis":
 
     fig.update_geos(fitbounds="locations")
 
-    society_df=pd.read_csv(r"C:\Users\DELL\Desktop\house price predicton\flats_final")
+    society_df=pd.read_csv("flats_final")
     society_df['society_name'] = society_df['society_name'].str.lower().str.strip()
     group_society = society_df.groupby('society_name').agg({
         'price': 'median',
