@@ -46,7 +46,7 @@ Deployed using Streamlit Community Cloud and GitHub integration.
 ![Home](home.png)
 
 ### Price Prediction
-![Prediction](predictor.png)
+![Prediction](prediction.png)
 
 ### Insight Module
 ![Insight](insight.png)
