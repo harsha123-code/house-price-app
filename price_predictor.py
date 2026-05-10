@@ -32,7 +32,7 @@ layout="wide"
 @st.cache_data(show_spinner=False)
 def get_image_ddg(query):
     try:
-        time.sleep(1)  # prevent rate limit
+        time.sleep(1) 
 
         with DDGS() as ddgs:
             results = list(ddgs.images(query, max_results=1))
@@ -293,7 +293,7 @@ elif page == "Analysis":
 
     st.title("📊 Data Analysis")
 
-    # Step 1: Clean + prepare data
+   
     geo_df.columns = geo_df.columns.str.strip().str.lower()
     cols = ['price', 'price_sqft', 'buildup_area', 'carpet_area', 'latitude', 'longitude']
 
@@ -304,13 +304,13 @@ elif page == "Analysis":
 
     group_df = geo_df.groupby('locality')[cols].mean().reset_index()
 
-    # Step 2: Bubble size
+  
     group_df['bubble_size'] = (
         (group_df['price'] - group_df['price'].min()) /
         (group_df['price'].max() - group_df['price'].min())
     ) * 20 + 5
 
-    # Step 3: Create map
+   
     fig = px.scatter_mapbox(
         group_df,
         lat='latitude',
@@ -616,12 +616,10 @@ elif page == 'Insight module':
     st.title(" Insight Module")
     st.caption("What-if simulator: Change one feature and see price impact")
 
-    # ---- LOAD MODEL ----
+    
     model = joblib.load("xgb_pipeline.joblib")
 
-    # ==============================
-    # 🔹 USER INPUT
-    # ==============================
+   
     st.markdown("### 🔹 Select Your Flat")
 
     col1, col2, col3 = st.columns(3)
@@ -784,7 +782,7 @@ elif page == 'Insight module':
 
 
 
-# load once
+
 
 
 ACCESS_KEY = "JltbxKqI8HZTSeIyBSZ3W8oR1JYx4GXt0EtRbsS7h70"
@@ -852,10 +850,10 @@ if page=='Recommendation':
     grouped["count"] = filtered.groupby("society_name").size().values
 
     def calculate_score(row):
-        # area similarity (closer = better)
+        
         area_score = 1 - abs(row["buildup_area"] - sqft) / sqft
 
-        # price preference (lower is better)
+       
         price_score = 1 / row["price"]
 
        
